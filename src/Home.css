@@ -2,8 +2,16 @@
     transition: transform 0.2s ease-in;
 
 }
-
 .card:hover {
     transform: scale(1.03);
     z-index: 50;
 }
+
+.container {
+    background: rgb(145, 255, 187);
+    background: 
+    linear-gradient(180deg, rgba(145, 255, 187, 1) 
+                    46%, rgb(72, 161, 104) 100%);
+}
+
+

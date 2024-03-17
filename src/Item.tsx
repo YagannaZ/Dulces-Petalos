@@ -2,12 +2,13 @@ import { IPlant } from './interfaces/planta.interface';
 
 interface PlantCardProps {
     plant: IPlant;
+    // onClick: ()=> void;
 }
 
 function PlantCard({ plant }: PlantCardProps) {
     return (
-        
-            <div className='card w-100 h-100'>
+        <>
+            <div className='card w-100 h-100' >
                 <img
                     src={plant.imgUrl}
                     alt={'Nombre de planta: ' + plant.name}
@@ -20,7 +21,9 @@ function PlantCard({ plant }: PlantCardProps) {
                     <p className='card-text'>{plant.price}</p>
                 </div>
             </div>
-        
+
+        </>
+
     );
 }
 

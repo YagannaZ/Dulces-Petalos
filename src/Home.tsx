@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from 'react'
 import './Home.css'
 import { IPlant } from './interfaces/planta.interface'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Search from './Search'
 import Item from './Item'
 
@@ -33,38 +34,47 @@ function Home() {
     }
 
     const plantasFiltradas = plantas.filter((planta) =>
-        planta.name.toLowerCase().includes(filtro.toLowerCase()) || 
+        planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
         planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
 
+    const navigate = useNavigate()
+    
+    const infoPlanta = (id: string) => {
+        navigate('/detalle')
+    }
 
     return (
         <>
-            <div className='container p-3' style={{ backgroundColor: 'gray' }}>
-
-                <div className='row px-4'>
-                    <h2 className='text-light col-4'>Productos</h2>
-                    <Search onChange={filtrar} />
-                </div>
-                {/* Si hay un error en la llamada de la información */}
-                {errorFetch && (
-                    <div className='mt-5'>
-                        <h4 className='alert alert-danger' >Conexión fallida</h4>
+            <div className='global'>
+                <div className="container p-3 rounded" >
+                    <div className='row px-4'>
+                        <h1 className='text-dark col-4 display-3'>Productos</h1>
+                        <Search onChange={filtrar} />
                     </div>
-                )}
-
-                {/* Si la llamada es correcta */}
-                {!errorFetch && (
-                    <div className='p-4'>
-                        <div className='row'>
-                            {plantasFiltradas.map((p) => (
-                                <div className='col-3 mt-5 d-flex align-items-stretch' key={p.name}>
-                                    <Item plant={p}/>
-                                </div>
-                            ))}
+                    {/* Si hay un error en la llamada de la información */}
+                    {errorFetch && (
+                        <div className='mt-5'>
+                            <h4 className='alert alert-danger' >Conexión fallida</h4>
                         </div>
-                    </div>
-                )}
+                    )}
+
+                    {/* Si la llamada es correcta */}
+                    {!errorFetch && (
+                        <div className='p-4'>
+                            <div className='row'>
+                                {plantasFiltradas.map((p) => (
+                                    <div className='col-3 mt-5 d-flex align-items-stretch'
+                                        key={p.name}
+                                        onClick={() => infoPlanta(p.id)} >
+                                        <Item plant={p} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
+
         </>
     )
 }
