@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
 import './Home.css'
 import { IPlant } from './interfaces/planta.interface'
 import React from 'react'
+import Search from './Search'
+import Item from './Item'
 
 function Home() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [errorFetch, setErrorFetch] = useState<boolean>(false)
     const [plantas, setPlantas] = useState<IPlant[]>([])
+    const [filtro, setFiltro] = useState<string>('')
+    const direccionAPI = 'https://dulces-petalos.herokuapp.com/api/product'
 
     const fetchProductos = async (): Promise<void> => {
         try {
-            const data = await fetch('https://dulces-petalos.herokuapp.com/api/product')
+            const data = await fetch(direccionAPI)
             const json: IPlant[] = await data.json()
             setErrorFetch(false)
             setPlantas(json)
@@ -23,31 +28,42 @@ function Home() {
         fetchProductos();
     }, []);
 
+    const filtrar = (e: ChangeEvent<HTMLInputElement>) => {
+        setFiltro(e.target.value)
+    }
+
+    const plantasFiltradas = plantas.filter((planta) =>
+        planta.name.toLowerCase().includes(filtro.toLowerCase()) || 
+        planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
+
+
     return (
         <>
-            <div className='container' style={{ backgroundColor: 'gray' }}>
-                <h2 className='text-light'>Listado de productos</h2>
+            <div className='container p-3' style={{ backgroundColor: 'gray' }}>
 
-                {/* {errorFetch && (
-                    <div className='alert alert-danger' role='alert' >
-                        Conexión fallida
+                <div className='row px-4'>
+                    <h2 className='text-light col-4'>Productos</h2>
+                    <Search onChange={filtrar} />
+                </div>
+                {/* Si hay un error en la llamada de la información */}
+                {errorFetch && (
+                    <div className='mt-5'>
+                        <h4 className='alert alert-danger' >Conexión fallida</h4>
                     </div>
-                )} */}
-                {/* {errorFetch! && ( */}
-                    <div className='row'>
-                        {plantas.map((p) => (
-                            <div className='col-3' key={p.name}>
-                                <div className='card' style={{ width: '18rem' }}>
-                                    <img src={p.imgUrl} alt={'Nombre de planta: '+p.name} className='card-img-top bordered'/>
-                                    <div className="card-body">
-                                    <h5 className="card-title">{p.name}</h5>
-                                    <p className="card-text">{p.binomialName}</p>
-                                    </div>
+                )}
+
+                {/* Si la llamada es correcta */}
+                {!errorFetch && (
+                    <div className='p-4'>
+                        <div className='row'>
+                            {plantasFiltradas.map((p) => (
+                                <div className='col-3 mt-5 d-flex align-items-stretch' key={p.name}>
+                                    <Item plant={p}/>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                {/* )} */}
+                )}
             </div>
         </>
     )
