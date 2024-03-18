@@ -21,9 +21,7 @@ function PlantCard({ plant }: PlantCardProps) {
                     <p className='card-text'>{plant.price}</p>
                 </div>
             </div>
-
         </>
-
     );
 }
 

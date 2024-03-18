@@ -11,9 +11,10 @@ function Home() {
     const [errorFetch, setErrorFetch] = useState<boolean>(false)
     const [plantas, setPlantas] = useState<IPlant[]>([])
     const [filtro, setFiltro] = useState<string>('')
+    //VARIABLE GLOBAL - .ENV?
     const direccionAPI = 'https://dulces-petalos.herokuapp.com/api/product'
 
-    const fetchProductos = async (): Promise<void> => {
+    const fetchPlantas = async (): Promise<void> => {
         try {
             const data = await fetch(direccionAPI)
             const json: IPlant[] = await data.json()
@@ -26,22 +27,25 @@ function Home() {
     }
 
     React.useEffect(() => {
-        fetchProductos();
+        fetchPlantas();
     }, []);
 
     const filtrar = (e: ChangeEvent<HTMLInputElement>) => {
         setFiltro(e.target.value)
+
+        const plantasFiltradas = plantas.filter((planta) =>
+            planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
+            planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
+
+        setPlantas(plantasFiltradas)
     }
 
-    const plantasFiltradas = plantas.filter((planta) =>
-        planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
-        planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
+    //DUDA SOBRE OPTIMIZACION
+    // const plantasFiltradas = plantas.filter((planta) =>
+    //     planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
+    //     planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
 
     const navigate = useNavigate()
-    
-    const infoPlanta = (id: string) => {
-        navigate('/detalle')
-    }
 
     return (
         <>
@@ -51,6 +55,7 @@ function Home() {
                         <h1 className='text-dark col-4 display-3'>Productos</h1>
                         <Search onChange={filtrar} />
                     </div>
+
                     {/* Si hay un error en la llamada de la información */}
                     {errorFetch && (
                         <div className='mt-5'>
@@ -62,16 +67,17 @@ function Home() {
                     {!errorFetch && (
                         <div className='p-4'>
                             <div className='row'>
-                                {plantasFiltradas.map((p) => (
+                                {plantas.map((p) => (
                                     <div className='col-3 mt-5 d-flex align-items-stretch'
                                         key={p.name}
-                                        onClick={() => infoPlanta(p.id)} >
+                                        onClick={() => navigate(`/detalle?id=${p.id}`)} >
                                         <Item plant={p} />
                                     </div>
                                 ))}
                             </div>
                         </div>
                     )}
+
                 </div>
             </div>
 

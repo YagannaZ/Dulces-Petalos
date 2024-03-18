@@ -1,3 +1,5 @@
+/*HOME*/
+
 .card {
     transition: transform 0.2s ease-in;
 
@@ -14,4 +16,19 @@
                     46%, rgb(72, 161, 104) 100%);
 }
 
+/*DETALLE*/
 
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+}
+
+.img-detail {
+    height: auto;
+    width: 80%;
+}
+
+P{
+    font-size:x-large;
+}
