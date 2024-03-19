@@ -1,8 +1,7 @@
-import { IPlant } from './interfaces/planta.interface';
+import { IPlant } from '../interfaces/planta.interface';
 
 interface PlantCardProps {
     plant: IPlant;
-    // onClick: ()=> void;
 }
 
 function PlantCard({ plant }: PlantCardProps) {
@@ -12,7 +11,7 @@ function PlantCard({ plant }: PlantCardProps) {
                 <img
                     src={plant.imgUrl}
                     alt={'Nombre de planta: ' + plant.name}
-                    className='card-img-top bordered p-1'
+                    className='card-img-top bordered p-1 '
                     style={{ height: '65%' }}
                 />
                 <div className='card-body bg-transparent'>

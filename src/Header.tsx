@@ -1,3 +1,4 @@
+import Breadcrumbs from './components/Breadcrumbs'
 import './Header.css'
 import logo from './assets/icon_2x.png'
 
@@ -11,6 +12,7 @@ function Header () {
                     <img src={logo} alt='Logo de Dulces Pétalos' />
                 </a>
             </div>
+            <Breadcrumbs/>
         </div>
         </>
     )

@@ -3,8 +3,8 @@ import './Home.css'
 import { IPlant } from './interfaces/planta.interface'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Search from './Search'
-import Item from './Item'
+import Search from './components/Search'
+import Item from './components/Item'
 
 function Home() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -32,24 +32,21 @@ function Home() {
 
     const filtrar = (e: ChangeEvent<HTMLInputElement>) => {
         setFiltro(e.target.value)
-
-        const plantasFiltradas = plantas.filter((planta) =>
-            planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
-            planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
-
-        setPlantas(plantasFiltradas)
     }
 
-    //DUDA SOBRE OPTIMIZACION
-    // const plantasFiltradas = plantas.filter((planta) =>
-    //     planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
-    //     planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
+    const plantasFiltradas = plantas.filter((planta) =>
+        planta.name.toLowerCase().includes(filtro.toLowerCase()) ||
+        planta.binomialName.toLowerCase().includes(filtro.toLowerCase()))
+    
+    // setPlantas(plantasFiltradas)
+    //DUDA SOBRE OPTIMIZACION Y MAL FUNCIONAMIENTO DE SEARCH
+
 
     const navigate = useNavigate()
 
     return (
         <>
-            <div className='global'>
+            <div className='global mb-5'>
                 <div className="container p-3 rounded" >
                     <div className='row px-4'>
                         <h1 className='text-dark col-4 display-3'>Productos</h1>
@@ -67,7 +64,7 @@ function Home() {
                     {!errorFetch && (
                         <div className='p-4'>
                             <div className='row'>
-                                {plantas.map((p) => (
+                                {plantasFiltradas.map((p) => (
                                     <div className='col-3 mt-5 d-flex align-items-stretch'
                                         key={p.name}
                                         onClick={() => navigate(`/detalle?id=${p.id}`)} >

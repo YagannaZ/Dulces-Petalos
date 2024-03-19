@@ -5,7 +5,7 @@ import Home from './Home.tsx'
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.css';
 import Header from './Header.tsx';
-import Detalle from './Detalle.tsx';
+import Detalle from './components/Detalle.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

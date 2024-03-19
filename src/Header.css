@@ -4,7 +4,7 @@
     background: rgb(145, 255, 187);
     background:
         linear-gradient(180deg, rgba(145, 255, 187, 1) 
-                        50%, rgb(31, 31, 31) 40%);
+                        10%, rgb(105, 182, 134) 80%);
     display: flex;
     align-items: center;
     padding-left: 2vw;;
