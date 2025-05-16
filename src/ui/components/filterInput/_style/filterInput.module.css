@@ -1,0 +1,23 @@
+.inputWrapper {
+    position: relative;
+    width: 30vw;
+    margin-bottom: 3rem;
+}
+
+.input {
+    width: 100%;
+    padding-left: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+}

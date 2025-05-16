@@ -1,0 +1,66 @@
+.card {
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: 32px;
+    padding: 1rem;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.imageWrapper {
+    position: relative;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.priceTag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: #FFF;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+}
+
+.arrow img {
+    padding: 0;
+    margin: 0;
+    background-color: #FFF;
+    border-radius: 999px;
+    position: absolute;
+    width: 1.8rem;
+    height: 1.8rem;
+    bottom: 12px;
+    right: 12px;
+    padding: 0.4rem 0.4rem;
+    object-fit: contain;
+}
+
+.info {
+    padding-bottom: 1rem;
+    text-align: left;
+}
+
+.title {
+    margin: 0;
+    color: #111;
+}
+
+.subtitle {
+    margin: 0.3rem 0 0 0;
+    font-weight: 400;
+    color: #606060;
+}
