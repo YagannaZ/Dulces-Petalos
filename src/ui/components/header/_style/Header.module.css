@@ -1,0 +1,13 @@
+.main {
+    width: 100%;
+    background-color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.logo {
+    height: 5vh;
+}
