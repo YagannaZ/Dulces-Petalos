@@ -1,6 +1,7 @@
 import {getPlantsUseCases} from "@/app/getPlantsUseCases.ts";
 import {useEffect, useState} from "react";
 import type {Plant} from "@/core/domain/Plant.ts";
+import style from './_style/PlantList.module.css'
 
 export const PlantList = () => {
   const {getAllPlants} = getPlantsUseCases();
@@ -22,12 +23,13 @@ export const PlantList = () => {
 
   return (
     <>
-      <h1>Lista de plantas</h1>
-      <ul>
-        {plants.map((plant) => (
-          <li key={plant.name}>{plant.name}</li>
-        ))}
-      </ul>
+      <div className={style.main}>
+        <div className={style.grid}>
+          {plants.map((plant) => (
+            <div key={plant.id} className={style.card}>{plant.name}</div>
+          ))}
+        </div>
+      </div>
     </>
   )
 }
