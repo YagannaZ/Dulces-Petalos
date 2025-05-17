@@ -81,12 +81,12 @@ button {
     .image {
         width: 100%;
         max-width: 100%;
-        border-radius: 32px; /* asegúrate de que siga aquí */
+        border-radius: 32px;
     }
 
     .infoContainer {
         width: 100%;
-        padding-top: 0rem;
+        padding-top: 0;
     }
 
     .binomialName {
