@@ -49,7 +49,7 @@ export const PlantDetail = () => {
 
 
   return (
-    <div className={style.mainDetail}>
+    <div className={style.mainPlantDetail}>
       <Breadcrumbs plantName={plant.name}/>
       <div className={style.plantContainer}>
         <img src={plant!.imgUrl} alt={plant.name} className={style.image}/>

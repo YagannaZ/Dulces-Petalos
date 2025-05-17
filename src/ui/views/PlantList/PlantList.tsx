@@ -34,7 +34,7 @@ export const PlantList = () => {
   );
 
   return (
-    <div className={style.main}>
+    <div className={style.mainPlantList}>
       <PlantFilter onFilterChange={handleFilterChange}/>
       <div className={style.grid}>
         {filteredPlants.map((plant) => (

@@ -21,3 +21,11 @@
     height: 1rem;
     pointer-events: none;
 }
+
+@media (max-width: 768px) {
+    .inputWrapper {
+        position: relative;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}

@@ -1,4 +1,4 @@
-.mainDetail {
+.mainPlantDetail {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -50,10 +50,11 @@ button {
 }
 
 @media (max-width: 768px) {
-    .mainDetail {
+    .mainPlantDetail {
         width: 100%;
         max-width: 100%;
         padding: 1rem;
+        padding-top: 2rem;
     }
 
     .plantContainer {
