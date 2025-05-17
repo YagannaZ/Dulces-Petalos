@@ -19,6 +19,19 @@
     max-width: 1200px;
 }
 
+.stateContainer {
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.state {
+    font-size: 2rem;
+    color: #606060;
+}
+
 .image {
     width: 50%;
     height: auto;
@@ -78,6 +91,11 @@ button {
 
     .binomialName {
         padding-bottom: 1rem;
+    }
+
+    .state {
+        font-size: 1rem;
+        color: #606060;
     }
 }
 

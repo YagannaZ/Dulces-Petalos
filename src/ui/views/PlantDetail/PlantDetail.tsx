@@ -43,10 +43,20 @@ export const PlantDetail = () => {
     fetchPlant();
   }, [id]);
 
-  if (error) return <h1>{error}</h1>;
-  if (loading) return <h1>Cargando...</h1>;
-  if (!plant) return <h1>Planta no encontrada</h1>;
+  const showStateMessage = loading || error || !plant;
 
+  if (showStateMessage) {
+    let message = '';
+    if (error) {
+      message = error;
+    } else if (loading) {
+      message = 'Cargando...';
+    } else {
+      message = 'Planta no encontrada';
+    }
+
+    return (<div className={style.stateContainer}><h3 className={style.state}>{message}</h3></div>)
+  }
 
   return (
     <div className={style.mainPlantDetail}>
