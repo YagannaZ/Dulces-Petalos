@@ -29,9 +29,13 @@ export const PlantList = () => {
     setFilterText(text);
   };
 
-  const filteredPlants = plants.filter((plant) =>
-    plant.name.toLowerCase().includes(filterText.toLowerCase())
-  );
+  const filteredPlants = plants.filter((plant) => {
+    const search = filterText.toLowerCase();
+    return (
+      plant.name.toLowerCase().includes(search) ||
+      plant.binomialName.toLowerCase().includes(search)
+    );
+  });
 
   return (
     <div className={style.mainPlantList}>
