@@ -42,7 +42,7 @@ export const PlantList = () => {
       <PlantFilter onFilterChange={handleFilterChange}/>
       <div className={style.grid}>
         {filteredPlants.map((plant) => (
-          <Card plant={plant}/>
+          <Card plant={plant} key={plant.id}/>
         ))}
       </div>
     </div>

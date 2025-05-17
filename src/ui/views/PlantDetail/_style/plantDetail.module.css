@@ -86,7 +86,7 @@ button {
 
     .infoContainer {
         width: 100%;
-        padding-top: 0rem;
+        padding-top: 0;
     }
 
     .binomialName {

@@ -46,7 +46,7 @@ export const PlantDetail = () => {
   const showStateMessage = loading || error || !plant;
 
   if (showStateMessage) {
-    let message = '';
+    let message
     if (error) {
       message = error;
     } else if (loading) {
