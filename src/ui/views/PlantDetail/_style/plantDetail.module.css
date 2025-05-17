@@ -1,4 +1,14 @@
-.main {
+.mainDetail {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+
+    padding: 3rem;
+}
+
+.plantContainer {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -7,8 +17,6 @@
     width: 100%;
     height: 100%;
     max-width: 1200px;
-
-    padding: 3rem;
 }
 
 .image {
@@ -39,5 +47,36 @@
 
 button {
     align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+    .mainDetail {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .plantContainer {
+        height: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .image {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 32px; /* asegúrate de que siga aquí */
+    }
+
+    .infoContainer {
+        width: 100%;
+        padding-top: 0rem;
+    }
+
+    .binomialName {
+        padding-bottom: 1rem;
+    }
 }
 
