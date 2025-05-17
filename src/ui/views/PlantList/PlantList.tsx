@@ -4,6 +4,7 @@ import type {Plant} from "@/core/domain/Plant.ts";
 import style from './_style/PlantList.module.css'
 import {Card} from "@/ui/components/card/Card.tsx";
 import {PlantFilter} from "@/ui/components/filterInput/FilterInput.tsx";
+import {sanitizePlant} from "@/ui/views/utils/sanitizePlants.ts";
 
 export const PlantList = () => {
   const {getAllPlants} = getPlantsUseCases();
@@ -14,8 +15,8 @@ export const PlantList = () => {
     const fetchPlants = async () => {
       try {
         const plants = await getAllPlants();
-        console.log('Plantas: ', plants);
-        setPlants(plants);
+        const sanitizedPlants = plants.map(sanitizePlant);
+        setPlants(sanitizedPlants);
       } catch (error) {
         console.log("Error al obtener plantas: ", error);
       }

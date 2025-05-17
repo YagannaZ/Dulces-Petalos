@@ -10,7 +10,7 @@ export const Card = ({plant}: Props) => {
   const navigate = useNavigate();
 
   const goToDetail = () => {
-    navigate(`/product/${plant.id}`)
+    navigate(`/plant/${plant.id}`)
   }
 
   return (

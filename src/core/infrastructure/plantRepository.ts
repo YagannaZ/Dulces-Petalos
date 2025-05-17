@@ -12,7 +12,7 @@ export const plantRepository: PlantRepository = {
   getAllPlants: async () => {
     try {
       const {data: plants} = await api.get<PlantDTO[]>('/product');
-      console.error('Lista de plantas: ', plants);
+      console.log('Lista de plantas: ', plants);
 
       return plants.map(toDomainPlant)
     } catch (error) {
@@ -26,7 +26,7 @@ export const plantRepository: PlantRepository = {
       if (!plant) {
         throw new Error('No plant found');
       }
-      console.error('Detalle de planta: ', plant);
+      console.log('Detalle de planta: ', plant);
 
       return toDomainPlant(plant)
     } catch (error) {
